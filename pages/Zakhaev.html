@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Profil de Zakhaev | SCPiNet
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+      --bg: #0d1117;
+      --fg: #00ffe1;
+      --accent: #21f3ff;
+      --highlight: #ff007a;
+      --font: 'Share Tech Mono', monospace;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #010409;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 0.3rem 0.6rem;
+    }
+    nav a:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #000;
+    }
+    main {
+      padding: 2rem;
+      flex: 1;
+      background: radial-gradient(ellipse at center, #0a0d12 0%, #000 100%);
+    }
+    .card {
+      background: rgba(33, 243, 255, 0.08);
+      border: 1px solid var(--fg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 12px rgba(0,255,225,0.15);
+    }
+    h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .lang-switch {
+      margin-bottom: 1rem;
+    }
+    .lang-switch button {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      cursor: pointer;
+      margin-right: 0.5rem;
+      font-family: inherit;
+    }
+    .lang-content {
+      display: none;
+    }
+    .lang-content.active {
+      display: block;
+    }
+  
+
+html, body {
+  background-color: #0a0a0a !important;
+  background-image: url('../assets/scp-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 30%;
+}
+  
+
+html, body {
+  background-color: #0a0a0a !important;
+  background-image: url('../assets/scp-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 90% !important;
+}
+
+/* Effets de néon animé */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px var(--accent), 0 0 10px var(--highlight); }
+  50% { text-shadow: 0 0 20px var(--highlight), 0 0 30px var(--accent); }
+  100% { text-shadow: 0 0 5px var(--accent), 0 0 10px var(--highlight); }
+}
+h1, h2, h3, .card, button {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Scanline + grain */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(to bottom, rgba(255,0,0,0.02) 0px, rgba(255,0,0,0.02) 2px, transparent 2px, transparent 4px);
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+/* Léger flottement */
+.card {
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+  </style>
+  <script>
+   const requiredClearance = 3;
+  const actualClearance = parseInt(localStorage.getItem('clearanceLevel'));
+  if (isNaN(actualClearance) || actualClearance < requiredClearance) {
+    alert('Accès refusé : niveau d’accréditation insuffisant.');
+    window.location.href = 'login.html';
+  }
+  </script>
+ </head>
+ <body style="
+background: url('../assets/scp-bg.webp') no-repeat center center fixed;
+background-size: 30%;
+opacity: 0.97;
+">
+  <header>
+   <h1>
+    SCPiNet // Profil Zakhaev
+   </h1>
+   <nav>
+    <a href="index.html">
+     Accueil
+    </a>
+    <a href="historique.html">
+     Historique
+    </a>
+    <a href="relations.html">
+     Relations
+    </a>
+    <a href="decorations.html">
+     Décorations
+    </a>
+    <a href="scps.html">
+     SCP Logs
+    </a>
+   </nav>
+  </header>
+  <main>
+   <div class="card">
+    <div class="lang-switch">
+     <button onclick="switchLang('fr')">
+      FR
+     </button>
+     <button onclick="switchLang('en')">
+      EN
+     </button>
+     <button onclick="switchLang('ru')">
+      RU
+     </button>
+    </div>
+    <div class="lang-content active" id="lang-fr">
+     <img alt="Zakhaev" src="Zakhaev.jpg" style="width:100%;max-width:400px;border:2px solid var(--accent);border-radius:8px;margin-bottom:1rem;box-shadow:0 0 15px #00ffe166;"/>
+     <h2>
+      Agent Maksim Zakhaev
+     </h2>
+     <p>
+      <strong>
+       Nom :
+      </strong>
+      Zakhaev, Maksim Ivanov
+     </p>
+     <p>
+      <strong>
+       Date de naissance :
+      </strong>
+      07/01/2000
+     </p>
+     <p>
+      <strong>
+       Nationalité :
+      </strong>
+      Russe (ex-Tatarstan)
+     </p>
+     <p>
+      <strong>
+       Poste :
+      </strong>
+      Soldat opérateur - CAP Pytheas
+     </p>
+     <p>
+      <strong>
+       Niveau d'accès :
+      </strong>
+      3
+     </p>
+     <p>
+      <strong>
+       Spécialité :
+      </strong>
+      Sécurité &amp; interventions spéciales SCP
+     </p>
+     <p>
+      <strong>
+       Langues parlées :
+      </strong>
+      Russe, Français, Anglais
+     </p>
+    </div>
+    <div class="lang-content" id="lang-en">
+     <img alt="Zakhaev" src="Zakhaev.jpg" style="width:100%;max-width:400px;border:2px solid var(--accent);border-radius:8px;margin-bottom:1rem;box-shadow:0 0 15px #00ffe166;"/>
+     <h2>
+      Agent Maksim Zakhaev
+     </h2>
+     <p>
+      <strong>
+       Name:
+      </strong>
+      Zakhaev, Maksim Ivanov
+     </p>
+     <p>
+      <strong>
+       Date of Birth:
+      </strong>
+      01/07/2000
+     </p>
+     <p>
+      <strong>
+       Nationality:
+      </strong>
+      Russian (Tatarstan)
+     </p>
+     <p>
+      <strong>
+       Position:
+      </strong>
+      Operative - CAP Pytheas
+     </p>
+     <p>
+      <strong>
+       Clearance Level:
+      </strong>
+      3
+     </p>
+     <p>
+      <strong>
+       Specialization:
+      </strong>
+      Security &amp; SCP Tactical Response
+     </p>
+     <p>
+      <strong>
+       Languages:
+      </strong>
+      Russian, French, English
+     </p>
+    </div>
+    <div class="lang-content" id="lang-ru">
+     <h2>
+      Агент Максим Захаев
+     </h2>
+     <p>
+      <strong>
+       Имя:
+      </strong>
+      Максим Иванов Захаев
+     </p>
+     <p>
+      <strong>
+       Дата рождения:
+      </strong>
+      07.01.2000
+     </p>
+     <p>
+      <strong>
+       Национальность:
+      </strong>
+      Россия (Татарстан)
+     </p>
+     <p>
+      <strong>
+       Должность:
+      </strong>
+      Оператор безопасности — CAP Pytheas
+     </p>
+     <p>
+      <strong>
+       Уровень допуска:
+      </strong>
+      3
+     </p>
+     <p>
+      <strong>
+       Специализация:
+      </strong>
+      Безопасность и реагирование SCP
+     </p>
+     <p>
+      <strong>
+       Языки:
+      </strong>
+      Русский, Французский, Английский
+     </p>
+    </div>
+   </div>
+  </main>
+  <script>
+   function switchLang(lang) {
+      document.querySelectorAll('.lang-content').forEach(div => {
+        div.classList.remove('active');
+      });
+      document.getElementById('lang-' + lang).classList.add('active');
+    }
+  </script>
+  <div style="position:fixed;top:1rem;right:1rem;">
+   <button onclick="logout()" style="padding:0.5rem 1rem;background:#ff007a;color:#fff;border:none;border-radius:5px;font-family:'Share Tech Mono';cursor:pointer;">
+    Déconnexion
+   </button>
+  </div>
+  <script>
+   function logout() {
+    localStorage.removeItem('clearanceLevel');
+    window.location.href = 'login.html';
+  }
+  </script>
+ </body>
+</html>

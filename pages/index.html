@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   SCPiNet | Deepwell Terminal
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+  <style>
+   :root {
+      --bg: #0d1117;
+      --fg: #00ffe1;
+      --accent: #21f3ff;
+      --highlight: #ff007a;
+      --font: 'Share Tech Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #010409;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: var(--fg);
+      text-decoration: none;
+      border: 1px solid transparent;
+      padding: 0.3rem 0.6rem;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #000;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      background: radial-gradient(ellipse at center, #0a0d12 0%, #000 100%);
+    }
+
+    .card {
+      background: rgba(33, 243, 255, 0.08);
+      border: 1px solid var(--fg);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 12px rgba(0,255,225,0.15);
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .terminal {
+      background: #000000dd;
+      padding: 1rem;
+      border-radius: 10px;
+      font-family: var(--font);
+      color: var(--fg);
+    }
+
+    .terminal input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: var(--fg);
+      padding: 0.6rem 0;
+      font-size: 1rem;
+    }
+  
+
+html, body {
+  background-color: #0a0a0a !important;
+  background-image: url('../assets/scp-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 30%;
+}
+  
+
+html, body {
+  background-color: #0a0a0a !important;
+  background-image: url('../assets/scp-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: 90% !important;
+}
+
+/* Effets de néon animé */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px var(--accent), 0 0 10px var(--highlight); }
+  50% { text-shadow: 0 0 20px var(--highlight), 0 0 30px var(--accent); }
+  100% { text-shadow: 0 0 5px var(--accent), 0 0 10px var(--highlight); }
+}
+h1, h2, h3, .card, button {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* Scanline + grain */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(to bottom, rgba(255,0,0,0.02) 0px, rgba(255,0,0,0.02) 2px, transparent 2px, transparent 4px);
+  pointer-events: none;
+  z-index: 10;
+  mix-blend-mode: overlay;
+}
+
+/* Léger flottement */
+.card {
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+  </style>
+  <script>
+   const requiredClearance = 3;
+  const actualClearance = parseInt(localStorage.getItem('clearanceLevel'));
+  if (isNaN(actualClearance) || actualClearance < requiredClearance) {
+    alert('Accès refusé : niveau d’accréditation insuffisant.');
+    window.location.href = 'login.html';
+  }
+  </script>
+ </head>
+ <body style="
+background: url('../assets/scp-bg.webp') no-repeat center center fixed;
+background-size: 30%;
+opacity: 0.97;
+">
+  <header>
+   <h1>
+    SCPiNet // Nœud sécurisé : Deepwell-ZKH
+   </h1>
+   <nav>
+    <a href="Zakhaev.html">
+     Profil
+    </a>
+    <a href="historique.html">
+     Historique
+    </a>
+    <a href="relations.html">
+     Relations
+    </a>
+    <a href="decorations.html">
+     Décorations
+    </a>
+    <a href="scps.html">
+     SCP Logs
+    </a>
+   </nav>
+  </header>
+  <main>
+   <section class="card">
+    <h2>
+     Données agent : Maksim Zakhaev
+    </h2>
+    <p>
+     Connexion établie via CAP-Pytheas. Accès sécurisé accordé.
+     <br/>
+     Utilisez l’interface ou le terminal ci-dessous pour interroger le nœud SCPiNet.
+    </p>
+   </section>
+   <section class="card terminal">
+    <h2>
+     Terminal SCPiNet
+    </h2>
+    <div id="cli-output">
+     Tapez
+     <code>
+      help
+     </code>
+     pour voir les commandes.
+    </div>
+    <div>
+     &gt;
+     <input autocomplete="off" id="cli-input" type="text"/>
+    </div>
+   </section>
+  </main>
+  <script>
+   const output = document.getElementById('cli-output');
+    const input = document.getElementById('cli-input');
+
+    const commands = {
+      help: `Commandes disponibles :\n- open profile\n- open historique\n- open relations\n- open decorations\n- open scps\n- clear`,
+      'open profile': 'Chargement du profil Zakhaev... ↳',
+      'open historique': 'Lecture de l’historique... ↳',
+      'open relations': 'Relations : accès en cours... ↳',
+      'open decorations': 'Distinctions et décorations... ↳',
+      'open scps': 'Fichiers SCP en cours de chargement... ↳',
+      clear: ''
+    };
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        const val = input.value.trim();
+        const response = commands[val] || `Commande inconnue : ${val}`;
+        output.innerText += `\n> ${val}\n${response}`;
+        if (val.startsWith('open')) {
+          const target = val.split(' ')[1];
+          setTimeout(() => window.location.href = `${target}.html`, 900);
+        }
+        if (val === 'clear') output.innerText = '';
+        input.value = '';
+      }
+    });
+  </script>
+  <button onclick="toggleAudio()" style="position:fixed;top:1rem;right:1rem;padding:0.5rem 1rem;background:#21f3ff;color:#000;border:none;border-radius:5px;font-family:'Share Tech Mono';cursor:pointer;">
+   🔊 Audio
+  </button>
+  <script>
+   const audio = document.getElementById('bg-audio');
+  let isMuted = false;
+  function toggleAudio() {
+    isMuted = !isMuted;
+    audio.muted = isMuted;
+    event.target.textContent = isMuted ? '🔇 Audio' : '🔊 Audio';
+  }
+  </script>
+  <script>
+   function logout() {
+    localStorage.removeItem('clearanceLevel');
+    window.location.href = 'login.html';
+  }
+
+  function switchAgent() {
+    const agent = document.getElementById('agentSelect').value;
+    alert('Connexion au terminal de l'agent ' + agent + '...\n(Fonctionnalité à venir)');
+  }
+  </script>
+  <button onclick="logout()" style="position:fixed;top:1rem;right:1rem;padding:0.5rem 1rem;background:#ff007a;color:#fff;border:none;border-radius:5px;font-family:'Share Tech Mono';cursor:pointer;">
+   Déconnexion
+  </button>
+  <script>
+   function logout() {
+    localStorage.removeItem('clearanceLevel');
+    window.location.href = 'login.html';
+  }
+  </script>
+ </body>
+</html>

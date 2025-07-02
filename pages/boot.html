@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Foundation Boot Sequence</title>
+  <style>
+    body {
+      background: black;
+      color: #00ff00;
+      font-family: monospace;
+      font-size: 1rem;
+      padding: 2rem;
+    }
+    #boot-text {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+    .blink {
+      animation: blink 1s steps(2, start) infinite;
+    }
+    @keyframes blink {
+      to { visibility: hidden; }
+    }
+  </style>
+</head>
+<body>
+  <div id="boot-text"></div>
+  <span class="blink">> Running...</span>
+  <audio id="boot-sound" autoplay>
+    <source src="../assets/boot-sound.mp3" type="audio/mpeg">
+  </audio>
+  <script>
+    const lines = `> SCP Foundation OS v12.4 initializing...<br>> Checking RAID arrays... OK<br>> Authenticating secure agent node: ZKH<br>> Mounting temporal link cluster... OK<br>> Verifying biometric lock... AUTH GRANTED<br>> Establishing secure tunnel to Deepwell Relay @ 10.47.225.127... OK<br>> Establishing secure tunnel to Site-17 Core @ 10.213.141.180... OK<br>> Establishing secure tunnel to RAISA Uplink @ 10.154.138.73... OK<br>> Establishing secure tunnel to Omicron Cluster @ 10.219.85.12... OK<br>> Establishing secure tunnel to Pytheas Archive @ 10.191.162.45... OK<br>> Establishing secure tunnel to Sigma Control @ 10.154.138.73... OK<br>> Establishing secure tunnel to Borealis Tap @ 10.154.138.73... OK<br>> Injecting access token...<br>> Compiling SCPiNet interface...<br>> Finalizing graphical override...<br>> Access level 3 handshake complete.<br>> SCiNet Node: ACTIVE<br><br>>> Redirecting to terminal access node...`.split("\n");
+    const display = document.getElementById("boot-text");
+    let i = 0;
+    function typeLine() {
+      if (i < lines.length) {
+        display.innerHTML += lines[i] + "<br>";
+        i++;
+        setTimeout(typeLine, 300);
+      } else {
+        document.querySelector('.blink').textContent = "> Launching SCPiNet...";
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 2000);
+      }
+    }
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('boot-sound');
+      if (audio.paused) audio.play();
+    });
+    typeLine();
+  </script>
+</body>
+</html>
