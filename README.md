@@ -38,8 +38,8 @@ Il simule un accès sécurisé à la base de données SCPiNet utilisée par les 
 ## 🧠 Auteur
 
 > Projet créatif basé sur l’univers SCP, développé pour immersion narrative interactive.
-> Design et intégration : ⚙️ ChatGPT + Utilisateur visionnaire
+> Design et intégration : Un con
 
 ---
 
-*Ce projet n’est pas affilié officiellement à la SCP Foundation.*
+
